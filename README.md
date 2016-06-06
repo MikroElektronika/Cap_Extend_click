@@ -3,9 +3,9 @@
 ![Cap Extend Click](http://cdn.mikroe.com/img/click/accel-3/preview/accel-3-click-thumb-02.png)
 
 ---
-[Product Page](http://www.mikroe.com/click/capextend/)
+[Product Page](http://www.mikroe.com/click/cap-extend/)
 
-[Manual Page](http://docs.mikroe.com/Cap_Extend_Click)
+[Manual Page](http://docs.mikroe.com/Cap_Extend_click)
 
 ---
 
