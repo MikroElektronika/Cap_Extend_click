@@ -1,6 +1,6 @@
 ![MikroE](http://www.mikroe.com/img/designs/beta/logo_small.png)
 
-![Cap Extend Click](http://cdn.mikroe.com/img/click/accel-3/preview/accel-3-click-thumb-02.png)
+![Cap Extend Click](http://cdn.mikroe.com/img/click/cap-extend/cap-extend-click.png)
 
 ---
 [Product Page](http://www.mikroe.com/click/cap-extend/)
@@ -11,7 +11,7 @@
 
 ### General Description
 
-Description Coming...
+Cap Extend click is a mikroBUS™ add-on board with a SEMTECH SX8633 low power, capacitive button touch controller. It has 12 pins for connecting capacitive inputs (either touch-buttons or proximity sensors). Any sort of conductive object can be used as an input. Additional 8 GPIO pins, available on the side-edges of the board, can be used as LED drivers. The SX8633 IC integrates a 10 bit ADC – a resolution high enough to support a wide variety of touch pad sizes and shapes to be used with the click. Cap Extend click communicates with the target MCU through the mikroBUS™ I2C interface, with additional functionality provided by RST and INT pins. Designed to use a 3.3V power supply only.
 
 
 ---
