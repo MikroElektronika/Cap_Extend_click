@@ -220,7 +220,10 @@ int capextend_hal_init( uint8_t address_id )
 #else
     _i2c_hw_address             = ( address_id << 1 );
 #endif
-
+    if( write_i2c_p == 0 || read_i2c_p == 0 )
+        return -1;
+    else 
+        return 0;
 }
 
 void capextend_hal_write( uint8_t *command,
@@ -350,28 +353,8 @@ void capextend_hal_read( uint8_t *command,
     write_bytes_i2c_p( command, cmd_size );
     read_bytes_i2c_p( buffer, count );
 
-#elif defined( __MIKROC_PRO_FOR_AVR__ )
-    start_i2c_p();
-    write_i2c_p( _i2c_hw_address | WRITE_BIT );
-
-    while ( cmd_size-- )
-        write_i2c_p( *( command++ ) );
-    stop_i2c_p();
-    start_i2c_p();
-    write_i2c_p( _i2c_hw_address | READ_BIT );
-
-    while( count-- > 1 )
-    {
-        *( buffer++ ) = read_i2c_p( NACK_BIT );
-        while( busy_i2c_p() )
-               asm nop;
-    }
-
-    *buffer = read_i2c_p( ACK_BIT );
-
-    stop_i2c_p();
-    
-#elif defined( __MIKROC_PRO_FOR_PIC32__ )  || \
+#elif defined( __MIKROC_PRO_FOR_AVR__ )    || \
+      defined( __MIKROC_PRO_FOR_PIC32__ )  || \
       defined( __MIKROC_PRO_FOR_8051__ )   || \
       defined( __MIKROC_PRO_FOR_DSPIC__ )
     start_i2c_p();
@@ -385,14 +368,15 @@ void capextend_hal_read( uint8_t *command,
 
     while( count-- > 1 )
     {
-        *( buffer++ ) = read_i2c_p( NACK_BIT );
-        while( I2C_Is_Idle() )
+        *( buffer++ ) = read_i2c_p( ACK_BIT );
+        while( i2c_is_idle_p() )
                asm nop;
     }
 
-    *buffer = read_i2c_p( ACK_BIT );
+    *buffer = read_i2c_p( NACK_BIT );
 
     stop_i2c_p();
+    
 #elif defined( __MIKROC_PRO_FOR_PIC__ )
     start_i2c_p();
     write_i2c_p( _i2c_hw_address + WRITE_BIT );
