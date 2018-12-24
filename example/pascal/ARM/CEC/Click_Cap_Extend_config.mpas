@@ -1,0 +1,8 @@
+unit Click_Cap_Extend_config;
+
+uses Click_Cap_Extend_types;
+
+const
+    _CAPEXTEND_I2C_CFG : array[1] of uint32_t = (_I2C_100KHZ); 
+    
+end.
